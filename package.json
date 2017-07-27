@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/agilie/AIS-Angular/issues"
   },
-  "homepage": "https://github.com/agilie/AIS-Angular#readme"
+  "homepage": "https://github.com/agilie/AIS-Angular#readme",
+  "dependencies": {
+    "@angular/common": "^4.3.1",
+    "@angular/compiler": "^4.3.1",
+    "@angular/core": "^4.3.1",
+    "@angular/platform-browser": "^4.3.1",
+    "@angular/platform-browser-dynamic": "^4.3.1",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.14"
+  }
 }
