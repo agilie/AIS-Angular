@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: '<h1>Hello Angular!</h1>'
+    template: '<h1>Hello Angular! 2 + 2 = {{ 2 + 2 }}</h1>'
 })
 
 export class MyComponent {
