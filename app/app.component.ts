@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {ApiService} from "./api.service";
 
 @Component({
     selector: 'my-app',
@@ -6,5 +7,9 @@ import {Component} from '@angular/core';
 })
 
 export class MyComponent {
+    
+    constructor(private api: ApiService) {
+        api.get('/api/users');
+    }
 
 }
