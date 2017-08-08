@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {ApiService} from "./api.service";
+import {BroadcasterService} from "./broadcaster.service";
 
 @Component({
     selector: 'my-app',
     template: `<div *ngFor="let item of items">
-        <my-item [item]="item"
-                 (tagSelected)="tagSelected($event)"></my-item>
+        <my-item [item]="item"></my-item>
     </div>`
 })
 
@@ -34,8 +34,9 @@ export class MyComponent {
         }
     ];
 
-    constructor(private api: ApiService) {
+    constructor(private api: ApiService, bs: BroadcasterService) {
         api.get('/api/users');
+        bs.tagChanged.subscribe(tag => this.tagSelected(tag))
     }
 
     tagSelected(tag) {

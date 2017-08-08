@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ApiService} from "./api.service";
+import {BroadcasterService} from "./broadcaster.service";
 
 @Component({
     selector: 'my-tag-list',
@@ -12,10 +13,13 @@ import {ApiService} from "./api.service";
 export class MyTagList {
 
     @Input() tags;
-    @Output() tagSelected: EventEmitter<any> = new EventEmitter();
+
+    constructor(private bs: BroadcasterService) {
+
+    }
 
     tagClicked(tag) {
-        this.tagSelected.emit(tag)
+        this.bs.onTagChange(tag)
     }
 
 }

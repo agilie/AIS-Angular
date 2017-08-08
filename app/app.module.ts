@@ -6,6 +6,7 @@ import {FakeService} from "./fake.service";
 import {PipesModule} from "./pipes.module";
 import {MyItem} from "./item.component";
 import {MyTagList} from "./tag_list.component";
+import {BroadcasterService} from "./broadcaster.service";
 
 const TEST_MODE = false;
 
@@ -13,6 +14,7 @@ const TEST_MODE = false;
     imports: [BrowserModule, PipesModule],
     declarations: [MyComponent, MyItem, MyTagList],
     providers: [
+        BroadcasterService,
         {provide: ApiService, useFactory: () => new ApiService('http://dev.domain.com')},
     ],
     bootstrap: [MyComponent]
