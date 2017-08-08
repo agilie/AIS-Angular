@@ -4,7 +4,9 @@ import {HttpClient, HttpEventType} from "@angular/common/http";
 
 @Component({
     selector: 'my-app',
-    template: '<pre *ngFor="let post of posts">{{post | json}}</pre>'
+    template: `
+        <pre *ngFor="let post of posts">{{post | json}}</pre>
+    `
 })
 
 export class MyComponent {
@@ -14,17 +16,15 @@ export class MyComponent {
     constructor(private api: ApiService, http: HttpClient) {
         api.get('/api/users');
 
-        http.get('https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73751/world.topo.bathy.200407.3x21600x21600.D2.png',
-            {
-                observe: 'events',
-                reportProgress: true
-            })
+        http.get('https://jsonplaceholder.typicode.com/posts', {responseType: 'arraybuffer'})
             .subscribe(resp => {
-                if (resp.type == HttpEventType.DownloadProgress) {
-                    console.log(`Loaded: ${Math.round( 100 *resp.loaded / resp.total)}`);
-                } else if (resp.type == 4) {
-                    console.log('All done');
-                }
+                const blob = new Blob([resp]);
+
+                const url = window.URL.createObjectURL(blob);
+                let link = document.createElement('a');
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'my_file_name');
+                link.click();
             });
     }
 
