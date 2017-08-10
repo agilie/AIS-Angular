@@ -14,7 +14,7 @@ import {ROUTES} from "./app.routes";
 const TEST_MODE = false;
 
 @NgModule({
-    imports: [BrowserModule, PipesModule, HttpClientModule, RouterModule.forRoot(ROUTES)],
+    imports: [BrowserModule, PipesModule, HttpClientModule, RouterModule.forRoot(ROUTES), HttpClientModule],
     declarations: [MyComponent, ShotComponent, DashboardComponent],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: Tokenizer, multi: true},
