@@ -1,31 +1,32 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ApiService} from "./api.service";
 import {HttpClient, HttpEventType} from "@angular/common/http";
+
+import * as jQuery from 'jquery';
+import 'select2';
+import 'select2/dist/css/select2.css'
 
 @Component({
     selector: 'my-app',
     template: `
-        <pre *ngFor="let post of posts">{{post | json}}</pre>
+        <select #select>
+            <option *ngFor="let post of posts" [value]="post">{{post}}</option>
+        </select>
     `
 })
 
 export class MyComponent {
 
-    posts: any = [];
+    @ViewChild('select') select;
 
-    constructor(private api: ApiService, http: HttpClient) {
-        api.get('/api/users');
+    posts: any = ['First', 'Very long element', 'Third', 'Fourth', 'Fifth'];
 
-        http.get('https://jsonplaceholder.typicode.com/posts', {responseType: 'arraybuffer'})
-            .subscribe(resp => {
-                const blob = new Blob([resp]);
+    constructor() {
 
-                const url = window.URL.createObjectURL(blob);
-                let link = document.createElement('a');
-                link.setAttribute('href', url);
-                link.setAttribute('download', 'my_file_name');
-                link.click();
-            });
+    }
+
+    ngAfterViewInit() {
+        jQuery(this.select.nativeElement).select2();
     }
 
 }
