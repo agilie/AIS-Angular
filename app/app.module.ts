@@ -6,12 +6,16 @@ import {FakeService} from "./fake.service";
 import {PipesModule} from "./pipes.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {Tokenizer} from "./api.interceptor";
+import {ShotComponent} from "./shot/shot.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {RouterModule} from "@angular/router";
+import {ROUTES} from "./app.routes";
 
 const TEST_MODE = false;
 
 @NgModule({
-    imports: [BrowserModule, PipesModule, HttpClientModule],
-    declarations: [MyComponent],
+    imports: [BrowserModule, PipesModule, HttpClientModule, RouterModule.forRoot(ROUTES)],
+    declarations: [MyComponent, ShotComponent, DashboardComponent],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: Tokenizer, multi: true},
         {provide: ApiService, useFactory: () => new ApiService('http://dev.domain.com')},

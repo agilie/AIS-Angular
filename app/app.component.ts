@@ -4,7 +4,9 @@ import {HttpClient, HttpEventType} from "@angular/common/http";
 
 @Component({
     selector: 'my-app',
-    template: ``
+    template: `
+        <router-outlet></router-outlet>
+    `
 })
 
 export class MyComponent {
