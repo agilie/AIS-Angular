@@ -6,6 +6,7 @@ import {RouterModule} from "@angular/router";
 import {ROUTES} from "./app.routes";
 import {SigninComponent} from "./sign-in/signin.component";
 import {AuthComponent} from "./auth/auth.component";
+import {UserModel} from "./models/user.model";
 
 const TEST_MODE = false;
 
@@ -13,6 +14,7 @@ const TEST_MODE = false;
     imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(ROUTES), HttpClientModule],
     declarations: [MyComponent, SigninComponent, AuthComponent],
     providers: [
+        UserModel
     ],
     bootstrap: [MyComponent]
 })
