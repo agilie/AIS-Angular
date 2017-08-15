@@ -7,12 +7,13 @@ import {ROUTES} from "./app.routes";
 import {SigninComponent} from "./sign-in/signin.component";
 import {AuthComponent} from "./auth/auth.component";
 import {UserModel} from "./models/user.model";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 const TEST_MODE = false;
 
 @NgModule({
     imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(ROUTES), HttpClientModule],
-    declarations: [MyComponent, SigninComponent, AuthComponent],
+    declarations: [MyComponent, SigninComponent, AuthComponent, DashboardComponent],
     providers: [
         UserModel
     ],
