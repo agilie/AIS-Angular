@@ -4,12 +4,14 @@ import {MyComponent} from "./app.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import {ROUTES} from "./app.routes";
+import {SigninComponent} from "./sign-in/signin.component";
+import {AuthComponent} from "./auth/auth.component";
 
 const TEST_MODE = false;
 
 @NgModule({
     imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(ROUTES), HttpClientModule],
-    declarations: [MyComponent],
+    declarations: [MyComponent, SigninComponent, AuthComponent],
     providers: [
     ],
     bootstrap: [MyComponent]
