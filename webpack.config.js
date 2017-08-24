@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         app: './server.ts',
-        vendor: './vendor.ts'
+        // vendor: './vendor.ts'
     },
 
     target: 'node',
@@ -36,11 +36,11 @@ module.exports = {
 
     plugins: [
         new ExtractTextPlugin('bundle.css'),
-        new HtmlWebpackPlugin({
-            template: './index.html',
-            chunks: ['vendor', 'app'],
-            chunksSortMode: 'manual'
-        })
+        // new HtmlWebpackPlugin({
+        //     template: './index.html',
+        //     chunks: ['vendor', 'app'],
+        //     chunksSortMode: 'manual'
+        // })
     ],
 
     output: {

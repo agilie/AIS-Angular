@@ -9,13 +9,15 @@ import {ShotService} from "../services/shot.service";
 
 export class DashboardComponent implements OnInit {
 
+    shots:any = [];
+
     constructor(private shotService: ShotService) {
 
     }
 
     ngOnInit() {
         this.shotService.listOfShots()
-            .subscribe(shots => console.log(shots));
+            .subscribe(response => this.shots = response['shots']);
     }
 
 }

@@ -1,3 +1,6 @@
 <div>
-    I am dashboard
+    <div *ngFor="let shot of shots">
+        <img [src]="shot.avatar" alt="" width="100">
+        <a [routerLink]="['shots', shot.id]">{{ shot.title }}</a>
+    </div>
 </div>

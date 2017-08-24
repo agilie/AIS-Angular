@@ -14,7 +14,7 @@ enableProdMode();
 
 const app = express();
 
-let template = readFileSync('/Users/sergey/own_projects/AIS-Angular/dist/index.html').toString();
+let template = readFileSync('/Users/sergey/own_projects/AIS-Angular/index.html').toString();
 
 app.engine('html', (_, options, callback) => {
     const opts = { document: template, url: options.req.url };
@@ -24,7 +24,7 @@ app.engine('html', (_, options, callback) => {
 });
 
 app.set('view engine', 'html');
-app.set('views', 'dist');
+app.set('views', './');
 
 app.get('*.*', express.static('/Users/sergey/own_projects/AIS-Angular/dist'));
 
