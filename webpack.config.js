@@ -3,19 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        app: './main.ts',
+        app: './server.ts',
         vendor: './vendor.ts'
     },
 
+    target: 'node',
+
     resolve: {
-        extensions: ['.ts', '.js', '.css', '.scss']
+        extensions: ['.ts', '.js', '.css', '.scss', '.html']
     },
 
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader']
+                loaders: ['awesome-typescript-loader', 'angular2-template-loader']
             },
             {
                 test: /\.scss$/,
@@ -24,6 +26,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 loaders: ExtractTextPlugin.extract(['css-loader'])
+            },
+            {
+                test: /\.html$/,
+                loader: 'raw-loader'
             }
         ]
     },

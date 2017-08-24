@@ -4,7 +4,7 @@ import {ShotService} from "../services/shot.service";
 @Component({
     selector: 'app-dashboard',
     providers: [ShotService],
-    templateUrl: 'app/dashboard/dashboard.template.html'
+    templateUrl: './dashboard.template.html'
 })
 
 export class DashboardComponent implements OnInit {
