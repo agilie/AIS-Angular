@@ -4,10 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         app: './server.ts',
-        // vendor: './vendor.ts'
+        client: './main.ts',
     },
 
     target: 'node',
+    node: {
+        __dirname: false,
+        __filename: false,
+    },
 
     resolve: {
         extensions: ['.ts', '.js', '.css', '.scss', '.html']
@@ -36,11 +40,11 @@ module.exports = {
 
     plugins: [
         new ExtractTextPlugin('bundle.css'),
-        // new HtmlWebpackPlugin({
-        //     template: './index.html',
-        //     chunks: ['vendor', 'app'],
-        //     chunksSortMode: 'manual'
-        // })
+        new HtmlWebpackPlugin({
+            template: './index.html',
+            chunks: ['client'],
+            chunksSortMode: 'manual'
+        })
     ],
 
     output: {
