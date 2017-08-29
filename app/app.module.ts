@@ -10,12 +10,13 @@ import {ShotComponent} from "./shot/shot.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {RouterModule} from "@angular/router";
 import {ROUTES} from "./app.routes";
+import {UnlessDirective} from "./directives/unless.directive";
 
 const TEST_MODE = false;
 
 @NgModule({
     imports: [BrowserModule, PipesModule, HttpClientModule, RouterModule.forRoot(ROUTES), HttpClientModule],
-    declarations: [MyComponent, ShotComponent, DashboardComponent],
+    declarations: [MyComponent, ShotComponent, DashboardComponent, UnlessDirective],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: Tokenizer, multi: true},
         {provide: ApiService, useFactory: () => new ApiService('http://dev.domain.com')},
