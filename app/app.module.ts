@@ -11,8 +11,9 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {RouterModule} from "@angular/router";
 import {ROUTES} from "./app.routes";
 import {UnlessDirective} from "./directives/unless.directive";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PhoneValidator, TemplateForm} from "./template_form/template.form";
+import {ReactiveForm} from "./reactive_form/reactive.form";
 
 const TEST_MODE = false;
 
@@ -20,10 +21,10 @@ const TEST_MODE = false;
     imports: [
         BrowserModule, PipesModule, HttpClientModule,
         RouterModule.forRoot(ROUTES), HttpClientModule,
-        FormsModule],
+        FormsModule, ReactiveFormsModule],
     declarations: [
         MyComponent, ShotComponent, DashboardComponent, UnlessDirective,
-        TemplateForm, PhoneValidator],
+        TemplateForm, PhoneValidator, ReactiveForm],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: Tokenizer, multi: true},
         {provide: ApiService, useFactory: () => new ApiService('http://dev.domain.com')},

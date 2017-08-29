@@ -1,0 +1,21 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+
+    <div>
+        <input type="text" formControlName="username">
+    </div>
+
+    <div formGroupName="passwordForm">
+        <input type="password" formControlName="password">
+        <div *ngIf="passwordCtrl.hasError('required')">
+            Password is required
+        </div>
+        <input type="password" formControlName="confirm">
+    </div>
+
+    <div *ngIf="passwordForm.hasError('matchingError')">
+        Your password does not match
+    </div>
+
+
+    <input type="submit" value="Register">
+</form>
