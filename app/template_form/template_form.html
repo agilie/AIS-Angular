@@ -1,0 +1,14 @@
+<form (ngSubmit)="submit(myForm)" #myForm="ngForm">
+
+    <input type="text" name="username" ngModel
+           #userName="ngModel"
+           phone>
+    <div *ngIf="userName.hasError('phoneInvalid')">
+        {{userName.errors['phoneInvalid']['message']}}
+    </div>
+
+    <div>
+        <input type="submit" value="Register">
+    </div>
+
+</form>
