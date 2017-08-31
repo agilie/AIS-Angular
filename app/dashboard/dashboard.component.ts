@@ -3,19 +3,13 @@ import {ShotService} from "../services/shot.service";
 
 @Component({
     selector: 'app-dashboard',
-    providers: [ShotService],
     templateUrl: 'app/dashboard/dashboard.template.html'
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-    constructor(private shotService: ShotService) {
+    constructor() {
 
-    }
-
-    ngOnInit() {
-        this.shotService.listOfShots()
-            .subscribe(shots => console.log(shots));
     }
 
 }
