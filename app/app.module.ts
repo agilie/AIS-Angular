@@ -10,44 +10,18 @@ import {ShotComponent} from "./shot/shot.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {RouterModule} from "@angular/router";
 import {ROUTES} from "./app.routes";
-import {TransferState} from "./transfer-state/transfer-state";
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/first';
-import {ServerTransferStateModule} from "./transfer-state/server-transfer-state.module";
 
 const TEST_MODE = false;
 
-export function onBootstrap(appRef: ApplicationRef, transferState: TransferState) {
-    return () => {
-        appRef.isStable
-            .filter(stable => stable)
-            .first()
-            .subscribe(() => {
-                transferState.inject();
-            });
-    };
-}
 
 @NgModule({
     imports: [
-        BrowserModule.withServerTransition({
-            appId: 'ais-angular'
-        }),
-        ServerTransferStateModule,
+        BrowserModule,
         PipesModule, HttpClientModule, RouterModule.forRoot(ROUTES), HttpClientModule],
     declarations: [MyComponent, ShotComponent, DashboardComponent],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: Tokenizer, multi: true},
-        {provide: ApiService, useFactory: () => new ApiService('http://dev.domain.com')},
-        {
-            provide: APP_BOOTSTRAP_LISTENER,
-            useFactory: onBootstrap,
-            multi: true,
-            deps: [
-                ApplicationRef,
-                TransferState
-            ]
-        }
+        {provide: ApiService, useFactory: () => new ApiService('http://dev.domain.com')}
     ],
     bootstrap: [MyComponent]
 })
