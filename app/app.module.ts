@@ -16,7 +16,9 @@ const TEST_MODE = false;
 
 @NgModule({
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({
+            appId: 'ais-angular'
+        }),
         PipesModule, HttpClientModule, RouterModule.forRoot(ROUTES), HttpClientModule],
     declarations: [MyComponent, ShotComponent, DashboardComponent],
     providers: [
