@@ -3,15 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        // app: './server.ts',
+        app: './server.ts',
         client: './main.ts',
     },
 
-    // target: 'node',
-    // node: {
-    //     __dirname: false,
-    //     __filename: false,
-    // },
+    target: 'node',
+    node: {
+        __dirname: false,
+        __filename: false,
+    },
 
     resolve: {
         extensions: ['.ts', '.js', '.css', '.scss', '.html']
