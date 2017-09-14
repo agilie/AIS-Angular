@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -31,6 +32,14 @@ module.exports = {
             {
                 test: /\.html$/,
                 loaders: ['raw-loader']
+            },
+            {
+                test: /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
+                loader: "url-loader",
+                options: {
+                    name:'assets/[name].[hash:20].[ext]',
+                    limit: 10000
+                }
             }
         ]
     },
@@ -41,7 +50,11 @@ module.exports = {
             template: './index.html',
             chunks: ['vendor', 'app'],
             chunksSortMode: 'manual'
-        })
+        }),
+        new CopyWebpackPlugin([{
+            from: 'assets',
+            to: 'assets'
+        }])
     ],
 
     output: {
