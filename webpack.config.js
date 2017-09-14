@@ -15,7 +15,10 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader']
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader'
+                ]
             },
             {
                 test: /\.scss$/,
@@ -24,6 +27,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 loaders: ExtractTextPlugin.extract(['css-loader'])
+            },
+            {
+                test: /\.html$/,
+                loaders: ['raw-loader']
             }
         ]
     },

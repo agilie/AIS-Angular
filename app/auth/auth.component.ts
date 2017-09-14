@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-auth',
-    templateUrl: 'app/auth/auth.template.html'
+    templateUrl: './auth.template.html'
 })
 export class AuthComponent {
 

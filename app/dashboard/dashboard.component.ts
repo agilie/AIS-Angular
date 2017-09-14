@@ -4,7 +4,7 @@ import {UserService} from "../services/user.service";
 
 @Component({
     selector: 'app-dashboard',
-    templateUrl: 'app/dashboard/dashboard.template.html'
+    templateUrl: './dashboard.template.html'
 })
 export class DashboardComponent {
 
