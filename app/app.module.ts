@@ -22,5 +22,10 @@ import {LoggedInGuard, NotLoggedInGuard} from "./services/auth.guard";
 })
 
 export class AppModule {
+    
+    constructor() {
+        console.log('SECRET KEY');
+        console.log(process.env.SECRET_KEY);
+    }
 
 }
