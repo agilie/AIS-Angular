@@ -1,6 +1,8 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -34,7 +36,7 @@ module.exports = {
                 loaders: ['raw-loader']
             },
             {
-                test: /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
+                test: /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani|eot|svg)$/,
                 loader: "url-loader",
                 options: {
                     name:'assets/[name].[hash:20].[ext]',
@@ -45,20 +47,30 @@ module.exports = {
     },
 
     plugins: [
-        new ExtractTextPlugin('bundle.css'),
+        new CleanWebpackPlugin(['dist']),
+        new ExtractTextPlugin('[name].[hash].css'),
         new HtmlWebpackPlugin({
             template: './index.html',
-            chunks: ['vendor', 'app'],
+            chunks: ['common', 'vendor', 'app'],
             chunksSortMode: 'manual'
         }),
         new CopyWebpackPlugin([{
             from: 'assets',
             to: 'assets'
-        }])
+        }]),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            chunks: ['app', 'vendor'],
+            name: 'common'
+        })
     ],
 
     output: {
         path: __dirname + '/dist',
-        filename: '[name].js'
+        filename: '[name].[hash].js'
     }
 };
